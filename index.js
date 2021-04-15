@@ -7,7 +7,7 @@ require("dotenv").config();
 const MongoClient = require("mongodb").MongoClient;
 
 const port = process.env.PORT || 5055;
-// https://stark-castle-51951.herokuapp.com/
+
 
 
 app.use(cors());
