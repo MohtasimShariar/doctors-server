@@ -7,7 +7,7 @@ require("dotenv").config();
 const MongoClient = require("mongodb").MongoClient;
 
 const port = process.env.PORT || 5055;
-
+// https://stark-castle-51951.herokuapp.com/
 
 
 app.use(cors());
@@ -30,14 +30,14 @@ client.connect((err) => {
 
 //   client.close();
 
-  app.post('/addAppointment', (req, res) => {
+app.post('/addAppointment', (req, res) => {
     const appointment = req.body;
-    console.log(appointment);
-    appointmentCollection.insertOne(appointment).then((result) => {
-      res.send(result.insertedCount > 0);
-    })
-  });
-  
+    appointmentCollection.insertOne(appointment)
+        .then(result => {
+            res.send(result.insertedCount > 0)
+        })
+});
+
 app.get('/appointments', (req, res) => {
     appointmentCollection.find({})
         .toArray((err, documents) => {
@@ -95,6 +95,7 @@ app.post('/isDoctor', (req, res) => {
             res.send(doctors.length > 0);
         })
 })
+
 
   
 
